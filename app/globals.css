@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --color-night: #07040f;
+  --color-night-2: #110818;
+  --color-plum: #1c1028;
+  --color-ink: #f6f3ec;
+  --color-muted: #aab3c5;
+  --color-gold: #d6b56d;
+  --color-gold-2: #f4e4bf;
+  --color-violet: #bf00ff;
+  --color-line: rgba(214, 181, 109, 0.28);
+}
+
+html {
+  scroll-behavior: auto;
+  background: #07040f;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(191, 0, 255, 0.16), transparent 55%),
+    radial-gradient(900px 500px at -10% 20%, rgba(214, 181, 109, 0.08), transparent 50%),
+    #07040f;
+  color: #f6f3ec;
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #bf00ff;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #d6b56d;
+  outline-offset: 3px;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07040f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a2c18;
+  border: 2px solid #07040f;
+  border-radius: 999px;
+}
+
+.grain {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 3.15rem;
+  padding: 0 1.35rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 400ms ease,
+    border-color 400ms ease,
+    color 400ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-gold {
+  overflow: hidden;
+  color: #1a1208;
+  background: linear-gradient(180deg, #f7edd2 0%, #e4c98a 38%, #d6b56d 62%, #b89045 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 10px 30px rgba(214, 181, 109, 0.18);
+}
+
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.65) 48%, transparent 76%);
+  transform: translateX(-130%);
+}
+
+.btn-gold:hover::after {
+  transform: translateX(130%);
+  transition: transform 700ms ease;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(214, 181, 109, 0.72);
+  color: #f6f3ec;
+  background: rgba(7, 4, 15, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: rgba(214, 181, 109, 0.12);
+  border-color: #f4e4bf;
+}
+
+.field {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  color: #f6f3ec;
+  padding: 0.9rem 0.95rem;
+  font-size: 0.95rem;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.field::placeholder {
+  color: rgba(170, 179, 197, 0.55);
+}
+
+.field:focus {
+  outline: none;
+  border-color: #d6b56d;
+  background: rgba(214, 181, 109, 0.05);
+}
+
+select.field {
+  color-scheme: dark;
+}
+
+.field-error {
+  border-color: #e7a0a0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #aab3c5;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hairline {
+  background: linear-gradient(90deg, transparent, rgba(214, 181, 109, 0.7), transparent);
+}
+
+.orbit {
+  animation: orbit 28s linear infinite;
+}
+
+.orbit-reverse {
+  animation: orbit 42s linear infinite reverse;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .orbit-reverse,
+  .btn,
+  .btn-gold::after,
+  .loader-screen {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .loader-screen {
+    display: none;
+  }
+
+  .btn:hover,
+  .btn:active {
+    transform: none;
+  }
+}
+
+.loader-screen {
+  animation: loader-out 0.55s ease 0.85s forwards;
+}
+
+@keyframes loader-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
