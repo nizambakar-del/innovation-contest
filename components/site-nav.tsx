@@ -8,6 +8,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { EntryButton } from "@/components/entry-button";
 import { useRegister } from "@/components/register-context";
 import { navLinks } from "@/lib/content";
+import { withBase } from "@/lib/base-path";
 import { useLenis } from "lenis/react";
 
 export function SiteNav() {
@@ -31,7 +32,8 @@ export function SiteNav() {
   }, [lenis, menu, open]);
 
   function hrefFor(hash: string) {
-    return pathname === "/" ? hash : `/${hash}`;
+    const onHome = pathname === "/" || pathname === "";
+    return onHome ? hash : withBase(`/${hash}`);
   }
 
   return (

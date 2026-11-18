@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { eventInfo, navLinks } from "@/lib/content";
+import { withBase } from "@/lib/base-path";
 
 const channels = ["LinkedIn", "Instagram", "Facebook", "YouTube"];
 
@@ -25,7 +26,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a className="text-sm text-muted hover:text-ink" href={`/${link.href}`}>
+                  <a className="text-sm text-muted hover:text-ink" href={withBase(`/${link.href}`)}>
                     {link.label}
                   </a>
                 </li>

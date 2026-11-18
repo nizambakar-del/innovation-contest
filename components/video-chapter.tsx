@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { withBase } from "@/lib/base-path";
 
 export function VideoChapter() {
   const wrap = useRef<HTMLElement>(null);
@@ -37,10 +38,10 @@ export function VideoChapter() {
           loop
           playsInline
           preload="none"
-          poster="/poster.svg"
+          poster={withBase("/poster.svg")}
           onError={() => setFailed(true)}
         >
-          <source src="/space.webm" type="video/webm" />
+          <source src={withBase("/space.webm")} type="video/webm" />
         </video>
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-r from-night via-night/80 to-night/25" />
